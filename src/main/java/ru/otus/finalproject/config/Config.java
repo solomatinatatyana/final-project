@@ -1,7 +1,7 @@
 package ru.otus.finalproject.config;
 
+import com.epam.healenium.SelfHealingDriver;
 import org.openqa.selenium.MutableCapabilities;
-import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -12,14 +12,13 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import ru.otus.finalproject.config.ui.BrowserType;
 import ru.otus.finalproject.services.WebApplicationService;
 
-
 import java.util.concurrent.TimeUnit;
 
 @PropertySource("classpath:properties/application.properties")
 @Configuration
 @ComponentScan
 public class Config {
-    protected WebDriver driver;
+    protected SelfHealingDriver driver;
     protected MutableCapabilities options;
     protected static String browser = System.getProperty("browser").toUpperCase();
 
@@ -39,7 +38,7 @@ public class Config {
     private WebApplicationService webApplicationService;
 
     @Bean
-    public WebDriver getDriver() {
+    public SelfHealingDriver getDriver() {
         this.options = new MutableCapabilities();
         this.driver = webApplicationService.initDriver(BrowserType.valueOf(browser), options);
         this.driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
