@@ -32,21 +32,25 @@ public class MainPage extends AbstractPage{
                 WebElement calendarButton = (new WebDriverWait(driver, 10))
                         .until(ExpectedConditions.visibilityOf(eventNavigationNavBarBlock.calendarButton));
                 calendarButton.click();
+                Assert.assertEquals(driver.getCurrentUrl(),"https://events.epam.com/calendar");
                 break;
             case EVENTS:
                 WebElement eventButton = (new WebDriverWait(driver, 10))
                         .until(ExpectedConditions.visibilityOf(eventNavigationNavBarBlock.eventsButton));
                 eventButton.click();
+                Assert.assertEquals(driver.getCurrentUrl(),"https://events.epam.com/events");
                 break;
             case TALKS_LIBRARY:
                 WebElement talksButton = (new WebDriverWait(driver, 10))
                         .until(ExpectedConditions.visibilityOf(eventNavigationNavBarBlock.talksLibraryButton));
                 talksButton.click();
+                Assert.assertEquals(driver.getCurrentUrl(),"https://events.epam.com/talks");
                 break;
             case SPEAKERS:
                 WebElement speakersButton = (new WebDriverWait(driver, 10))
                         .until(ExpectedConditions.visibilityOf(eventNavigationNavBarBlock.speakersButton));
                 speakersButton.click();
+                Assert.assertEquals(driver.getCurrentUrl(),"https://events.epam.com/speakers");
                 break;
         }
     }
